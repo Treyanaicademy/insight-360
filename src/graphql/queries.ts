@@ -1,34 +1,16 @@
 import gql from "graphql-tag";
 
-export const USERS_SELECT_QUERY = gql`
-  query UsersSelect(
-    $filter: UserFilter!
-    $sorting: [UserSort!]
-    $paging: OffsetPaging!
-  ) {
-    users(filter: $filter, sorting: $sorting, paging: $paging) {
-      totalCount
-      nodes {
-        id
-        name
-        avatarUrl
-      }
+export const EVENT_CATEGORIES_QUERY = gql`
+    query EventCategories(
+        $filter: EventCategoryFilter!
+        $sorting: [EventCategorySort!]
+    ) {
+        eventCategories(filter: $filter, sorting: $sorting) {
+            totalCount
+            nodes {
+                id
+                title
+            }
+        }
     }
-  }
-`;
-
-export const TASK_STAGES_SELECT_QUERY = gql`
-  query TaskStagesSelect(
-    $filter: TaskStageFilter!
-    $sorting: [TaskStageSort!]
-    $paging: OffsetPaging!
-  ) {
-    taskStages(filter: $filter, sorting: $sorting, paging: $paging) {
-      totalCount
-      nodes {
-        id
-        title
-      }
-    }
-  }
 `;

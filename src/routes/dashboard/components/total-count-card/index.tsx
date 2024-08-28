@@ -1,27 +1,26 @@
-import type React from "react";
+import React, { type FC, type PropsWithChildren, Suspense } from "react";
 
 import { AuditOutlined, ShopOutlined, TeamOutlined } from "@ant-design/icons";
-import { Area, type AreaConfig } from "@ant-design/plots";
+import type { AreaConfig } from "@ant-design/plots";
 import { Card, Skeleton } from "antd";
 
 import { Text } from "@/components";
 
+import styles from "./index.module.css";
+
+const Area = React.lazy(() => import("@ant-design/plots/es/components/area"));
+
 type Type = "companies" | "contacts" | "deals";
 
-type Props = {
+export const DashboardTotalCountCard: React.FC<{
   resource: Type;
   isLoading: boolean;
   totalCount?: number;
-};
-
-export const DashboardTotalCountCard = ({
-  resource,
-  isLoading,
-  totalCount,
-}: Props) => {
+}> = ({ resource, isLoading, totalCount }) => {
   const { primaryColor, secondaryColor, icon, title } = variants[resource];
 
   const config: AreaConfig = {
+    className: styles.area,
     appendPadding: [1, 0, 0, 0],
     padding: 0,
     syncViewPadding: true,
@@ -89,9 +88,6 @@ export const DashboardTotalCountCard = ({
           size="xxxl"
           strong
           style={{
-            flex: 1,
-            whiteSpace: "nowrap",
-            flexShrink: 0,
             textAlign: "start",
             marginLeft: "48px",
             fontVariantNumeric: "tabular-nums",
@@ -108,21 +104,18 @@ export const DashboardTotalCountCard = ({
             totalCount
           )}
         </Text>
-        <Area
-          {...config}
-          style={{
-            width: "50%",
-          }}
-        />
+        <Suspense>
+          <Area {...config} />
+        </Suspense>
       </div>
     </Card>
   );
 };
 
-const IconWrapper = ({
+const IconWrapper: FC<PropsWithChildren<{ color: string }>> = ({
   color,
   children,
-}: React.PropsWithChildren<{ color: string }>) => {
+}) => {
   return (
     <div
       style={{
@@ -154,7 +147,7 @@ const variants: {
     secondaryColor: "#BAE0FF",
     icon: (
       <IconWrapper color="#E6F4FF">
-        {/* @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66 */}
+        {/* ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66 */}
         <ShopOutlined
           className="md"
           style={{
@@ -192,7 +185,7 @@ const variants: {
     secondaryColor: "#D9F7BE",
     icon: (
       <IconWrapper color="#F6FFED">
-        {/* @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66 */}
+        {/* ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66 */}
         <TeamOutlined
           className="md"
           style={{
@@ -234,7 +227,7 @@ const variants: {
     secondaryColor: "#FFD8BF",
     icon: (
       <IconWrapper color="#FFF2E8">
-        {/* @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66 */}
+        {/* ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66 */}
         <AuditOutlined
           className="md"
           style={{

@@ -1,3 +1,4 @@
+import type { FC, ReactElement } from "react";
 import React from "react";
 
 import {
@@ -9,23 +10,20 @@ import { Tag } from "antd";
 
 import type { QuoteStatus } from "@/graphql/schema.types";
 
-const variant: Record<
-  QuoteStatus,
-  { color: string; icon: React.ReactElement }
-> = {
+const variant: Record<QuoteStatus, { color: string; icon: ReactElement }> = {
   DRAFT: {
     color: "blue",
-    // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
+    // ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
     icon: <ExpandOutlined />,
   },
   SENT: {
     color: "cyan",
-    // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
+    // ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
     icon: <SendOutlined />,
   },
   ACCEPTED: {
     color: "green",
-    // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
+    // ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
     icon: <CheckCircleOutlined />,
   },
 };
@@ -34,7 +32,7 @@ type Props = {
   status: QuoteStatus;
 };
 
-export const QuoteStatusTag = ({ status }: Props) => {
+export const QuoteStatusTag: FC<Props> = ({ status }) => {
   return (
     <Tag
       style={{

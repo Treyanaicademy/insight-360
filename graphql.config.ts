@@ -13,13 +13,6 @@ const config: IGraphQLConfig = {
           config: {
             skipTypename: true,
             enumsAsTypes: true,
-            scalars: {
-              DateTime: {
-                input: "string",
-                output: "string",
-                format: "date-time",
-              },
-            },
           },
         },
         "src/graphql/types.ts": {

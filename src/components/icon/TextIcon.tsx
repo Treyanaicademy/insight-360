@@ -1,3 +1,5 @@
+import React from "react";
+
 import Icon from "@ant-design/icons";
 import type { CustomIconComponentProps } from "@ant-design/icons/lib/components/Icon";
 
@@ -28,6 +30,6 @@ export const TextIconSvg = () => (
 );
 
 export const TextIcon = (props: Partial<CustomIconComponentProps>) => (
-  // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
+  // ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
   <Icon component={TextIconSvg} {...props} />
 );

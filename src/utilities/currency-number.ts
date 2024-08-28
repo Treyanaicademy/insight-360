@@ -9,7 +9,7 @@ export const currencyNumber = (
     ) {
       return new Intl.NumberFormat("en-US", {
         style: "currency",
-        currency: "USD",
+        currency: "KSHS",
         ...options,
       }).format(value);
     }

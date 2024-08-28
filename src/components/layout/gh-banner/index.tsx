@@ -6,7 +6,6 @@ export const GitHubBanner = () => {
   useEffect(() => {
     const styleTag = document.createElement("style");
     document.head.appendChild(styleTag);
-    // biome-ignore lint/complexity/noForEach: <explanation>
     CSSRules.forEach((rule) =>
       styleTag.sheet?.insertRule(rule, styleTag.sheet.cssRules.length),
     );
@@ -135,7 +134,7 @@ const Text = () => {
   return (
     <a
       className="gh-link"
-      href="https://github.com/refinedev/refine/tree/master/examples/app-crm-minimal"
+      href="https://github.com/refinedev/refine/tree/master/examples/app-crm"
       target="_blank"
       rel="noreferrer"
       style={{
@@ -174,7 +173,7 @@ const Text = () => {
           💡
         </span>
         <span className="text">
-          Welcome To Insight-360
+          This example is open-source! Get the full source code.
         </span>
       </div>
     </a>
@@ -183,8 +182,7 @@ const Text = () => {
 
 const GlowSmall = ({ style, ...props }: SVGProps<SVGSVGElement>) => {
   return (
-    // biome-ignore lint/a11y/noSvgWithoutTitle: <explanation>
-<svg
+    <svg
       xmlns="http://www.w3.org/2000/svg"
       width={80}
       height={40}
@@ -214,8 +212,7 @@ const GlowSmall = ({ style, ...props }: SVGProps<SVGSVGElement>) => {
 };
 
 const GlowBig = ({ style, ...props }: SVGProps<SVGSVGElement>) => (
-  // biome-ignore lint/a11y/noSvgWithoutTitle: <explanation>
-<svg
+  <svg
     xmlns="http://www.w3.org/2000/svg"
     width={120}
     height={48}
